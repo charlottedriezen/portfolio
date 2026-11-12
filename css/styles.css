@@ -1,0 +1,408 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Unbounded:wght@200;300;400;700&display=swap");
+:root {
+  /* Waarom root? Als ik op een later tijdstip een bijvoorbeeld kleur wil veranderen in mijn design, 
+    moet ik het niet overal veranderen. Enkel hier. */
+  --bordeaux: #681d35; /* Bordeauxrood voor de achtergrond, en opvallende teksten om veel contrast 
+  te kunnen creëeren tussen de kleuren.*/
+  --creme: #f8f5f0; /* Voor de lichte achtergronden. Het creme gaat beter bij de andere 2 kleuren als puur wit*/
+  --roze: #d8a9b3; /* zachte kleur voor accenten en decoratie */
+}
+* {
+  /* Het sterretje zorgt ervoor dat alle allementen HTML-elementen zijn geselecteerd. */
+  box-sizing: border-box;
+}
+/* TYPOGRAFIE */
+h1,
+h2,
+h3,
+h4 {
+  /* Ik selecteer alle hoofdings zodat ik dezelfde instellingen erin kan zetten*/
+  font-family: "Bodoni Moda", serif;
+  font-weight: 500;
+}
+h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+}
+h2 {
+  font-size: 2.5rem;
+  line-height: 1.3;
+}
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+h4 {
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+p {
+  font-size: 0.9rem;
+}
+/* ALGEMENE LAYOUT */
+body {
+  /* Nu geven we de body van de website kleur, en buitenruimte. De margin wordt enkel toegepast 
+    op de body, niet op de aparte elementen. Box-model hadden we hierboven al ingesteld. 
+    De kleur wordt wel overgedragen op de elementen.*/
+  background-color: var(--bordeaux);
+  color: var(--roze);
+  margin: 0;
+  font-family: "Unbounded", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+body h1,
+body .pagina-intro {
+  text-align: center;
+}
+header {
+  /* Hiermee zorg ik ervoor dat de header horizontaal komt te staan. 
+  Zo staat mijn naam en het menu ook uit elkaar. */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Nu gaan we de header afgeronde hoeken geven en wat meer dimentie*/
+  background-color: var(--roze);
+  padding: 1.5rem 2rem;
+  margin: 1.25rem 2.5rem;
+  border-radius: 1rem;
+}
+header > a {
+  /* Met dit element bewerken we enkel "Charlotte Driezen" in onze header. */
+  font-size: 1.5rem;
+  color: var(--bordeaux);
+}
+nav a {
+  /* Nu stellen we in hoe het element a er moet uitzien in de navigatie van onze header. */
+  color: var(--bordeaux);
+  padding: 0.5rem 0.75rem;
+}
+nav a[aria-current="page"] {
+  /* En dit is speciaal voor de huidige pagina goed aan te kunnen duiden */
+  text-decoration: underline;
+}
+a {
+  /* We verwijderen de onderlijning van ALLE elementen a */
+  text-decoration: none;
+}
+ul {
+  /* Van alle ul elementen de bolletjes wegnemen*/
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+nav ul {
+  /* We moeten ook nog de lijst draaien. Dat doen we hier met flex */
+  display: flex;
+  gap: 1.5rem;
+}
+main > section {
+  /* We stellen de main in. Ik koos om per sectie een borderbox te gebruiken (die hebben we bij * ingesteld)*/
+  padding: 2.5rem 3rem;
+  background-color: var(--creme);
+  color: var(--bordeaux);
+  margin: 1rem 2.5rem;
+  border-radius: 1.5rem;
+}
+footer {
+  /* De algemene footer */
+  background-color: var(--roze);
+  color: var(--bordeaux);
+  padding: 2.5rem 3rem;
+  margin: 1.5rem 2.5rem;
+  border-radius: 1rem;
+}
+footer a {
+  /* De links om te bellen of te mailen heb ik onderlijnt, zo is het duidelijk dat je erop kan klikken*/
+  color: var(--bordeaux);
+  text-decoration: underline;
+}
+footer hr {
+  /* De onderste regel van de footer een klein randje geven erboven */
+  border: none;
+  border-top: 1px solid var(--bordeaux);
+  margin: 2rem 0 0 0;
+}
+footer address p {
+  /* De paragraaf van de contactgegevens anders instellen als de algemene instellingen. */
+  font-size: 1rem;
+  margin: 0 0 1.25rem 0;
+}
+footer .grid-twee-kolommen {
+  /* Ik pas de standaard grid een klein beetje aan voor de footer. Zo staat alles mooi in 2 kolommen */
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 3rem;
+}
+address {
+  font-style: normal;
+}
+form input,
+form textarea {
+  display: block; /* Elk invoerveld begint op nieuwe regel */
+  width: 100%; /* Vult de breedte van beschikbare kolom */
+  font: inherit; /* Neemt de letterinstellingen over van het bovenliggende element */
+  margin: 0 0 0.5rem 0;
+  padding: 0.6rem 0.75rem;
+}
+form label {
+  display: block; /* Elk invoerveld begint op nieuwe regel */
+  margin: 0 0 0.5rem 0;
+}
+form {
+  /* Een maximum breedte om ervoor te zorgen dat het formulier niet te breed word */
+  max-width: 450px;
+}
+.copyright {
+  text-align: center;
+  font-size: 0.75rem;
+}
+section h4 + ul {
+  list-style: disc;
+  padding: 0 0 0 1.5rem;
+}
+/* HOME PAGINA EN INTRODUCTIE */
+.hero-titel {
+  position: relative; /* zorgt ervoor dat we de plaats kunnen bepalen van een element */
+}
+.hero-titel span {
+  display: block; /* Elk invoerveld begint op nieuwe regel */
+}
+.hero-titel span:not(.ampersand) {
+  position: relative; /* zorgt ervoor dat we de plaats kunnen bepalen van een element */
+  z-index: 1; /* Bepalen of iets op de voor- of achtergrond moet staan */
+}
+.ampersand {
+  /* Ik heb de ampersand het effect gegeven dat het uit de pagina kwam. */
+  color: var(--creme);
+  font-size: 7rem;
+  font-style: italic;
+  text-align: center;
+  line-height: 0.8;
+  margin: -0.1em 0;
+
+  text-shadow:
+    -2px -2px 2px rgba(255, 255, 255, 0.9),
+    2px 2px 3px rgba(104, 29, 53, 0.3);
+  position: relative; /* Zo bepalen we waar iets staat. Kan dus ook overlappen nu */
+  z-index: 0; /* Zo zet ik de '&' achter de tekst */
+}
+
+/* Lijsten een leukere look geven */
+.interesses {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  max-width: 750px;
+  align-items: center;
+}
+.interesses li {
+  background-color: var(--roze);
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Afbeeldingen */
+img {
+  /* Geeft de afbeelding een bepaalde grote, zodat hij niet buiten het scherm valt. */
+  max-width: 100%;
+  height: auto;
+}
+.polaroid {
+  /* Bepaalde afbeeldingen wil ik een polaroid van maken. Dat doe ik door middel van een class te gebruiken*/
+  background-color: white;
+  padding: 0.75rem 0.75rem 2.5rem 0.75rem;
+  margin: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transform: rotate(3deg);
+  width: min(100%, 320px);
+  justify-self: center;
+  align-self: center;
+}
+.polaroid-links {
+  /* Omdat de over mij sectie anders staat wil ik die afbeelding anders laten draaien*/
+  transform: rotate(-3deg);
+}
+.polaroid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.polaroid figcaption {
+  text-align: center;
+  color: var(--bordeaux);
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0 0;
+}
+
+.foto-rechts {
+  /* Deze is dan weer bedoeld voor een foto rechts te laten staan, 
+  en de tekst er mooi naast te laten vloeien. */
+  float: right;
+  margin: 0 1rem 1.5rem 4.5rem;
+}
+#hobbys {
+  /* De tekst die ernaast moet komen. */
+  display: flow-root;
+}
+
+/* Layout van main */
+.grid-twee-kolommen {
+  /* Nu gaan we de secties die ik in 2 kolommen wil juist zetten aan de hand van grid */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2rem;
+  align-items: start;
+}
+.grid-twee-kolommen > h2,
+.grid-twee-kolommen > h3 {
+  /* We zorgen ervoor dat de eerst h2 of h3 binnen de grid-twee-kolommen verdeeld staat boven de 2 kolommen. 
+  Dus simpel gezegd, deze word verdeeld over alle kolommen in de grid*/
+  /* -1 betekent de laatst mogelijke kolom */
+  grid-column: 1/-1;
+  margin: 0;
+}
+.tekstblok p {
+  /* Hoe ver de tekst mag komen*/
+  max-width: 75ch;
+}
+/* Knoppen */
+.knop {
+  /* De knop moet ook een mooi kleurtje krijgen, en een leuk effect doen als je erover hovert */
+  display: inline-block;
+  background-color: var(--bordeaux);
+  color: var(--creme);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent; /* Bij hover stel ik een kleine border in, dat doe ik hier ook zodat het niet teveel verspringt */
+  cursor: pointer;
+  font: inherit;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+.knop:hover {
+  transform: translateY(-5px);
+  background-color: var(--roze);
+  color: var(--bordeaux);
+  border: 1px solid var(--bordeaux);
+}
+article .knop:hover {
+  background-color: var(--creme);
+  color: var(--bordeaux);
+}
+/* Projectkaarten */
+/* De projectkaarten mooi naast elkaar laten staan */
+.kaart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+.projectkaart {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--roze);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.projectkaart > p:last-child {
+  margin: auto 0 0 0;
+}
+.projectkaart figure {
+  margin: 0;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.projectkaart img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+.projectkaart:hover {
+  /* Ik wil de projectkaarten een beetje laten bewegen als je erover gaat met de muis. */
+  transform: translateY(-5px);
+}
+/* Tijdlijn: evolutie van het project */
+.tijdlijn {
+  list-style: none; /* De standaard nummers weg, we maken eigen cirkels */
+  padding: 0;
+  margin: 2rem 0 0 0;
+  counter-reset: stap; /* Start een teller op 0 */
+  position: relative; /* Zo kan de lijk zicht hieraan vastklampen*/
+}
+.tijdlijn::before {
+  /* Zo komt de verticale bordeaux lijn links te staan */
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1.5rem;
+  width: 3px;
+  background-color: var(--bordeaux);
+  transform: translateX(-50%); /* centreert de lijn precies op 1.5rem */
+}
+.tijdlijn > li {
+  counter-increment: stap; /* Elke li telt 1 op.*/
+  position: relative;
+  display: flow-root; /* De kaart omsluit de zwevende afbeelding */
+  margin: 0 0 2rem 4.5rem; /* ruimte links voor de cirkel */
+  padding: 1.5rem;
+  background-color: var(--creme);
+  border: 3px solid var(--bordeaux);
+  border-radius: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+.tijdlijn > li:last-child {
+  margin-bottom: 0;
+}
+.tijdlijn > li::before {
+  /* De cirkel met het stapnummer */
+  content: counter(stap);
+  position: absolute;
+  top: 1.5rem;
+  left: -4.5rem; /* Precies op de lijn*/
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%; /* Ik creëer een cirkel */
+  background-color: var(--bordeaux);
+  color: var(--creme);
+  font-family: "Unbounded", sans-serif;
+  font-size: 1.5rem;
+}
+.tijdlijn h3 {
+  margin:  0 0 1rem 0;
+}
+/* Screenshots naast de tekst plaatsen */
+.project-afbeelding {
+  float: right; /* rechts, de tekst vloeit eromheen (net als de .foto-rechts) */
+  clear: right; /* Twee afbeeldingen komen onder elkaar */
+  width: 45%;
+  margin: 0 0 1rem 1.5rem;
+}
+.project-afbeelding img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/10; /* Alle screenshots dezelfde vorm geven */
+  object-fit: cover; /* snij bij in plaats van uitrekken */ 
+  object-position: top; /* Toon de bovenkant van de afbeelding */
+  border-radius: 16px;
+  border: 3px solid var(--roze);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+.project-afbeelding figcaption{
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  font-style: italic;
+}
