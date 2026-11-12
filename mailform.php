@@ -27,7 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Send the email
     if (mail($recipient_email, $email_subject, $email_body, $headers)) {
-        echo "Message sent successfully";
+       $terug = $_SERVER["HTTP_REFERER"] ?? "/index.html";
+       header("location: " . $terug . "#contact");
+        exit;
     } else {
         echo "Message could not be sent";
     }
